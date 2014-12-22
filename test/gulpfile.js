@@ -11,7 +11,7 @@ gulp.task('build_image', function() {
     // 返回stream保存任务完成再进行下一个任务
     return gulp.src('./web/edit.png')
         .pipe(nocache({
-            type: 'media',
+            type: 'media', // media/css/js/tpl
             dest: './build/[path][name].[hash:6].[ext]',
             sourceContext: './web',
             outputContext: './build'

@@ -26,13 +26,16 @@ function nocache(options) {
             return cb();
         }
 
-        var contents = file.contents.toString(),
+        var contents = options.type === 'media' ? file.contents : file.contents.toString(),
             processor = Processor.getInstance(options.type),
             outputFile = path.resolve(processor._getFilename(options.dest, file.path, options.sourceContext, contents));
+
         processor.setMap(map);
         contents = processor.process(contents, file.path, outputFile, options);
-        file.contents = new Buffer(contents);
+        file.contents = options.type === 'media' ? contents : new Buffer(contents);
+
         map[file.path] = outputFile;
+
         file.path = outputFile;
 
         this.push(file);
