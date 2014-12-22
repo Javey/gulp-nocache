@@ -10,4 +10,4 @@ npm install gulp-nocache
 
 ## Usage
 
-`gulpfile.js`示例
+[gulpfile.js]示例
