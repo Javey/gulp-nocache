@@ -1,0 +1,15 @@
+{
+  "name": "gulp-nocache",
+  "version": "0.0.1",
+  "description": "Version static assets. Clear cache of browser when you publish your webapp.",
+  "main": "src/index.js",
+  "author": "Javey <jiawei23716@sina.com>",
+  "dependencies": {
+    "through2": "~0.6.3",
+    "gulp-util": "~3.0.1",
+    "web-nocache": "*"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.10"
+  }
+}
