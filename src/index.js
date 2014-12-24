@@ -37,6 +37,7 @@ function nocache(options) {
         map[file.path] = outputFile;
 
         file.path = outputFile;
+        file.base = path.dirname(outputFile);
 
         this.push(file);
 
