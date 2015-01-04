@@ -36,7 +36,7 @@ function nocache(options) {
         file.contents = options.type === 'media' ? contents : new Buffer(contents);
 
         // 经过processor.process处理后，计算hash值
-        outputFile = path.resolve(processor._getFilename(options.dest, file.path, options.sourceContext, contents));
+        outputFile = path.resolve(processor._getFilename(options.dest, file.path, options.sourceContext, contents || 'nocache'));
 
         map[file.path] = outputFile;
 
