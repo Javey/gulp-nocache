@@ -49,4 +49,8 @@ function nocache(options) {
     });
 }
 
+nocache.getMap = function() {
+    return map;
+};
+
 module.exports = nocache;
