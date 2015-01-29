@@ -7,7 +7,8 @@
 var through = require('through2'),
     gutil = require('gulp-util'),
     path = require('path'),
-    Processor = require('web-nocache').Processor;
+    WebNocache = require('web-nocache'),
+    Processor = WebNocache.Processor;
 
 const PLUGIN_NAME = 'gulp-nocache';
 
@@ -18,7 +19,8 @@ function nocache(options) {
         type: 'media',
         dest: '[path][name].[ext]',
         sourceContext: '',
-        outputContext: ''
+        outputContext: '',
+        cdn: []
     };
     return through.obj(function(file, enc, cb) {
         if (file.isStream()) {
@@ -28,10 +30,10 @@ function nocache(options) {
 
         var contents = options.type === 'media' ? file.contents : file.contents.toString(),
             processor = Processor.getInstance(options.type),
-        // 刚开始，仅用于计算路径，不需要hash值，待处理文件后在计算hash
+            // 刚开始，仅用于计算路径，不需要hash值，待处理文件后在计算hash
             outputFile = path.resolve(processor._getFilename(options.dest, file.path, options.sourceContext));
 
-        processor.setMap(map);
+        processor.setMap(map).setCdn(options.cdn);
         contents = processor.process(contents, file.path, outputFile, options);
         file.contents = options.type === 'media' ? contents : new Buffer(contents);
 
@@ -52,5 +54,7 @@ function nocache(options) {
 nocache.getMap = function() {
     return map;
 };
+
+nocache.utils = WebNocache.utils;
 
 module.exports = nocache;

@@ -26,7 +26,8 @@ gulp.task('build_css', ['build_image'], function() {
             type: 'css',
             dest: './build/[path][name].[hash:6].[ext]',
             sourceContext: './web',
-            outputContext: './build'
+            outputContext: './build',
+            cdn: ['//s1.static.com', '//s2.static.com']
         }))
         .pipe(gulp.dest(function(file) {return file.base}));
 });
@@ -37,7 +38,8 @@ gulp.task('build_js', ['build_image'], function() {
             type: 'js',
             dest: './build/[path][name].[hash:6].[ext]',
             sourceContext: './web',
-            outputContext: './build'
+            outputContext: './build',
+            cdn: ['//s1.static.com', '//s2.static.com']
         }))
         .pipe(gulp.dest(function(file) {return file.base}));
 });
@@ -48,7 +50,8 @@ gulp.task('build_tpl', ['build_image', 'build_css', 'build_js'], function() {
             type: 'tpl',
             dest: './build/[path][name].[ext]',
             sourceContext: './web',
-            outputContext: './build'
+            outputContext: './build',
+            cdn: ['//s1.static.com', '//s2.static.com']
         }))
         .pipe(gulp.dest(function(file) {return file.base}));
 });
