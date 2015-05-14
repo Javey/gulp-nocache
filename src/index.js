@@ -55,6 +55,10 @@ nocache.getMap = function() {
     return map;
 };
 
+nocache.setMap = function(value) {
+    map = value;
+};
+
 nocache.utils = WebNocache.utils;
 
 module.exports = nocache;

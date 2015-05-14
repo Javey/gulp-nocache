@@ -57,3 +57,7 @@ index.html
 ##getMap
 
 返回处理前后文件路径对应关系的map
+
+##setMap(value)
+
+设置处理前后文件路径对应关系的map
