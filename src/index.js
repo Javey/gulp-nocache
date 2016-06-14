@@ -33,7 +33,7 @@ function nocache(options) {
             // 刚开始，仅用于计算路径，不需要hash值，待处理文件后在计算hash
             outputFile = path.resolve(processor._getFilename(options.dest, file.path, options.sourceContext));
 
-        processor.setMap(map).setCdn(options.cdn);
+        processor.setFiles(file.path).setMap(map).setCdn(options.cdn);
         contents = processor.process(contents, file.path, outputFile, options);
         file.contents = options.type === 'media' ? contents : new Buffer(contents);
 
